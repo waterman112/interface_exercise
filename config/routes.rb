@@ -2,6 +2,16 @@ Rails.application.routes.draw do
 
   resources :articles
   root 'welcome#index'
+
+  namespace :interface do
+    resources :articles ,:only => [] do
+      collection do
+        get :all_articles
+        get :edit_article
+        get :new_article
+      end
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
